@@ -10,11 +10,14 @@ var logfileView = function() {
       m("input", {onchange: m.withAttr("value", vm.inputString), value: vm.inputString() })
     ]),
     m("div", [
-      m("input", {onchange: m.withAttr("value", vm.logfile.content), value: vm.logfile.content() })
+      //m('textarea[style="display:none;"]', "Write something here")
+      //{onchange: vm.logfile.content, value: vm.logfile.content() })
+      m("textarea", {onchange: m.withAttr("value", vm.logfile.content), value: vm.logfile.content() })
     ]),
     m('div', vm.logfile.title()),
     //m('div', vm.logfile.content()),
     m('div', vm.inputString()),
+    m('div', vm.newLineCount()),
     m('div.outputText', vm.output())
 
   ]);

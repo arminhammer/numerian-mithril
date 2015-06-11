@@ -19,6 +19,17 @@ var logfileViewModel = (function() {
     //vm.title = logfile.title();
     //vm.content = logfile.content();
 
+    vm.newLineCount = function() {
+      var pattern = new RegExp('\\n', 'g');
+      var result = vm.logfile.content().match(pattern);
+      if(result) {
+        return vm.logfile.content().match(pattern).length;
+      }
+      else {
+        return 0;
+      }
+    };
+
     vm.output = function() {
 
       if(vm.inputString() == '') {
@@ -28,16 +39,18 @@ var logfileViewModel = (function() {
       var tempContent = vm.logfile.content();
       var input = vm.inputString();
       var pattern = new RegExp(input, 'g');
-      console.log('Pattern:');
-      console.log(pattern);
+      //console.log('Pattern:');
+
+      console.log('logfile:');
+      console.log(vm.logfile.content());
+
       return m.trust(tempContent.replace(pattern, '<span class="patternMatch">' + input + '</span>'));
 
     };
 
-    console.log('logfile:');
-    console.log(vm.title);
-    console.log(vm.content);
-    console.log(vm.inputString());
+    //console.log(vm.title);
+    //console.log(vm.content);
+    //console.log(vm.inputString());
     /*
      //a running list of logfiles
      vm.list = [];
