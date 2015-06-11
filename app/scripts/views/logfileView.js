@@ -17,8 +17,8 @@ var logfileView = function() {
     m('div', vm.logfile.title()),
     //m('div', vm.logfile.content()),
     m('div', vm.inputString()),
-    m('div', vm.newLineCount()),
-    m('div.outputText', vm.output())
+    m('div', vm.output().count),
+    m('div.outputText', vm.output().body)
 
   ]);
 

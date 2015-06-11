@@ -41,31 +41,43 @@ var logfileViewModel = (function() {
       var pattern = new RegExp(input, 'g');
       //console.log('Pattern:');
 
-      console.log('logfile:');
-      console.log(vm.logfile.content());
+      //console.log('logfile:');
+      //console.log(vm.logfile.content());
 
-      return m.trust(tempContent.replace(pattern, '<span class="patternMatch">' + input + '</span>'));
+      var counter = vm.logfile.content().match(pattern);
 
-    };
+      var count = 0;
+      if (counter) {
+        count = vm.logfile.content().match(pattern).length
+      }
 
-    //console.log(vm.title);
-    //console.log(vm.content);
-    //console.log(vm.inputString());
-    /*
-     //a running list of logfiles
-     vm.list = [];
-     vm.description = m.prop("");
+      console.log('count');
+      console.log(count);
 
-     //adds a logfile to the list, and clears the description field for user convenience
-     vm.add = function() {
-     if (vm.description()) {
-     vm.list.push(new LogFile({description: vm.description()}));
-     vm.description("");
-     }
-     };
-     */
+      return {
+        count: count,
+        body: m.trust(tempContent.replace(pattern, '<span class="patternMatch">' + input + '</span>'))
+    }
   };
-  return vm
+
+  //console.log(vm.title);
+  //console.log(vm.content);
+  //console.log(vm.inputString());
+  /*
+   //a running list of logfiles
+   vm.list = [];
+   vm.description = m.prop("");
+
+   //adds a logfile to the list, and clears the description field for user convenience
+   vm.add = function() {
+   if (vm.description()) {
+   vm.list.push(new LogFile({description: vm.description()}));
+   vm.description("");
+   }
+   };
+   */
+};
+return vm
 }());
 
 module.exports = logfileViewModel;
