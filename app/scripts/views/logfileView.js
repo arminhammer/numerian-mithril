@@ -7,11 +7,16 @@ var logfileView = function() {
 
   return m("div", [
     m("div", [
-      m("input", {onchange: m.withAttr("value", vm.inputString), value: vm.inputString()})
+      m("input", {onchange: m.withAttr("value", vm.inputString), value: vm.inputString() })
     ]),
-    m('div', vm.title),
-    m('div', vm.content),
-    m('div', vm.inputString)
+    m("div", [
+      m("input", {onchange: m.withAttr("value", vm.logfile.content), value: vm.logfile.content() })
+    ]),
+    m('div', vm.logfile.title()),
+    //m('div', vm.logfile.content()),
+    m('div', vm.inputString()),
+    m('div.outputText', vm.output())
+
   ]);
 
   /*
