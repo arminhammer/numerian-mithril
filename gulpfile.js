@@ -17,7 +17,7 @@ var gulp = require('gulp'),
   serveStatic = require('serve-static'),
   serveIndex = require('serve-index');
 
-/* browserify */ 
+/* browserify */
 gulp.task('browserify', function() {
   var sourceFile = './app/scripts/main.js',
     destFolder = './app/scripts/browserify/',
@@ -47,10 +47,8 @@ gulp.task('browserify', function() {
 
 
 /* styles */
-gulp.task('styles', function () { 
-  
+gulp.task('styles', function () {
 
-  
   return gulp.src('app/styles/main.less')
     .pipe(plumber())
     .pipe(less({
@@ -58,7 +56,7 @@ gulp.task('styles', function () {
       precision: 10
     }))
     .pipe(autoprefixer({browsers: ['last 1 version']}))
-    .pipe(gulp.dest('app/styles')); 
+    .pipe(gulp.dest('app/styles'));
 
 });
 
@@ -125,10 +123,10 @@ gulp.task('watch', ['connect', 'bower'], function () {
     'app/scripts/**/*.js'
   ]).on('change', livereload.changed);
 
-  
 
-  
-    gulp.watch('app/styles/**/*.less', ['styles']); 
+
+
+    gulp.watch('app/styles/**/*.less', ['styles']);
 
     gulp.watch('app/scripts/**/*.js', ['browserify']);
 });
@@ -147,7 +145,7 @@ gulp.task('build', ['styles','extras', 'bower'], function () {
   var opts = {comments:true,spare:true, quotes: true};
   gulp.src('dist/*.html')
     .pipe(minifyHtml(opts))
-    .pipe(gulp.dest('dist'));    
+    .pipe(gulp.dest('dist'));
 });
 
 /* default */
